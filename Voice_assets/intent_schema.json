@@ -55,16 +55,10 @@
       "intent": "OutsideNo"
     },
     {
-      "intent": "SuggestionYes"
+      "intent": "Suggestidea"
     },
     {
-      "intent": "SuggestionNo"
-    },
-    {
-      "intent": "AnotherYes"
-    },
-    {
-      "intent": "AnotherNo"
+      "intent": "HotLine"
     }
   ]
 }

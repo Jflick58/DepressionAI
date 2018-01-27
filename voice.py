@@ -1,7 +1,9 @@
 from flask import Flask, render_template
-from flask_ask import Ask, statement, question, session
+from flask_ask import Ask, statement, question, session, context
 from controller import welcome, re, condolences,ideas
+from geopy.geocoders import Nominatim
 import random
+import requests
 
 app = Flask(__name__)
 ask = Ask(app, '/')
@@ -27,6 +29,32 @@ def evaluate_answers():
     else:
         return "Good job doing all those things. When you're depressed, those little things can be the most difficult"
 
+def get_alexa_location():
+    URL =  "https://api.amazonalexa.com/v1/devices/{}/settings" \
+           "/address".format(context.System.device.deviceId)
+    TOKEN =  context.System.user.permissions.consentToken
+    HEADER = {'Accept': 'application/json',
+             'Authorization': 'Bearer {}'.format(TOKEN)}
+    r = requests.get(URL, headers=HEADER)
+    if r.status_code == 200:
+        print(r.json())
+        return(r.json())
+
+# def find_therapist():
+#     keyword = "counseling OR therapist OR psychiatrist"
+#     alexa_location = get_alexa_location()
+#     geolocator = Nominatim()  # Set provider of geo-data
+#     address = "{}, {}".format(alexa_location["addressLine1"].encode("utf-8"),
+#                               alexa_location["city"].encode("utf-8"))
+#     location = geolocator.geocode(address)
+#     key = "AIzaSyA1yY-DOHIun0v_7kTwa_U5Ah6Am-kcjCM"
+#     print(address)
+#     print(location.latitude, location.longitude)
+#     URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={}&radius=35&keyword={}&key={}".format(location,keyword,key)
+#     r = requests.get(URL)
+#     if r.status_code == 200:
+#         first_output = r.json()
+#     print(first_output['results'])
 
 """These functions handle intent logic for the voice interface. """
 
@@ -46,7 +74,7 @@ def user_feels_good():
 
     session.attributes["feeling"] = "Good"
     session.attributes["State"] = "Question 0 Answered"
-    return question((random.choice(congrats)) + '      ' + 'Is there anything else you need?')
+    return question((random.choice(congrats)) + '      ' + 'Is there anything else you need? Want to send a report? Want me to reccommend a therapist?')
 
 @ask.intent('Negative')
 def user_feels_bad():
@@ -270,7 +298,7 @@ def handle_no():
             suggestion_inquiry = "Let's also try something else to improve your mood."
             idea = ideas()
             return statement(
-                message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Check in with me again later!")
+                message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Anything else I can do? I can send reports or suggest a local therapist.")
         elif session.attributes["State"] == "Suggested":
             session.attributes["State"] = "AnythingElse"
             return question("Okay, I hope that helped. Anything else I can do for you?")
@@ -360,7 +388,7 @@ def handle_yes():
             return statement(
                message + "       " + idea + "          " + "Would you like another suggestion?")
         elif session.attributes["State"] == "AnythingElse":
-            return question("Okay, I love to help. What can I do?")
+            return question("Okay, I love to help. What can I do for you? Say help if you would like to learn about my other capabilites.")
         else:
             return question("I'm sorry, I didn't get that. How are you feeling? ")
     except:
@@ -372,6 +400,16 @@ def suggest_ideas():
     idea = ideas()
     session.attributes["State"] = "Suggested"
     return statement(suggestion_inquiry + "       " + idea + "          " + "Would you like another suggestion?")
+
+@ask.intent('HotLine')
+def hot_line():
+    return statement("""Please don't hurt yourself or anyone else. I may just be a robot, but I
+                    was created by  person who wants to help you and thinks you are worth it.
+                    Please call the national suicide hotline at 1-800-273-8255 they can talk to you 24 hours a day, 7 days a week.
+                    I've placed their number on a card in your Alexa app for reference.""") \
+      .simple_card(title='Suicide Hot Line', content='Call Now 1-800-273-8255 ' )
+
+
 
 
 @ask.intent('AMAZON.StopIntent')
@@ -392,16 +430,9 @@ def handle_cancel():
     return statement(farewell_text)
 
 
-@ask.intent('AMAZON.HelpIntent')
-def handle_help():
-    """
-    (QUESTION) Handles the 'help' built-in intention.
+#@ask.intent('AMAZON.HelpIntent')
 
-    You can provide context-specific help here by rendering templates conditional on the help referrer.
-    """
 
-    help_text = render_template('help_text')
-    return question(help_text)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
