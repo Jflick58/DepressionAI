@@ -174,7 +174,7 @@ def outside():
     return statement(message + " " + suggestion_inquiry + " " + idea + " " + "I hope I could help. Check in with me again later!")
 
 @ask.intent('OutsideNo')
-def not_outiside:
+def not_outiside():
     message = random.choice([
         "That's too bad.",
         "That's okay, we all have days like that.",
@@ -218,6 +218,13 @@ def handle_help():
 
     help_text = render_template('help_text')
     return question(help_text)
+
+
+@ask.intent('HotLine')
+def hot_line():
+    return statement('Call 1-800-273-8255') \
+      .simple_card(title='Suicide Hot Line', content='Call Now')
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5500)

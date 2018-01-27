@@ -1,8 +1,25 @@
-PositiveFeeling  I feel good
-PositiveFeeling  I feel great
+PositiveFeeling I feel good
+PositiveFeeling I feel ok
+PositiveFeeling I feel great
+PositiveFeeling I feel awesome
+PositiveFeeling awesome
+PositiveFeeling ok
+PositiveFeeling fine
+PositiveFeeling great
+PositiveFeeling okay
+PositiveFeeling not bad
 
 NegativeFeeling I feel bad
-NegativeFeeling I  feel down
+NegativeFeeling I feel down
+NegativeFeeling feel like shit
+NegativeFeeling bad
+NegativeFeeling crappy
+NegativeFeeling shitty
+NegativeFeeling I felt better
+NegativeFeeling
+NegativeFeeling
+NegativeFeeling
+NegativeFeeling
 
 BedYes  I did my bed
 
@@ -24,9 +41,9 @@ OutsideYes I have been outside
 
 OutsideNo I have not been outside
 
-SuggestionsYes Give me suggestions
+SuggestionYes Give me suggestions
 
-SuggestionsNo Do not give suggestions
+SuggestionNo Do not give suggestions
 
 AnotherYes Give me another suggestions
 
