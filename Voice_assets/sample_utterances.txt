@@ -1,0 +1,33 @@
+PositiveFeeling  I feel good
+PositiveFeeling  I feel great
+
+NegativeFeeling I feel bad
+NegativeFeeling I  feel down
+
+BedYes  I did my bed
+
+BedNo I did not do my bed
+
+AteYes I did eat
+
+
+AteNo I did not eat
+AteNo I'm not hungry
+
+ShowerYes I did shower
+
+ShowerNo I did not shower
+
+DressedYes I'm dress
+
+OutsideYes I have been outside
+
+OutsideNo I have not been outside
+
+SuggestionsYes Give me suggestions
+
+SuggestionsNo Do not give suggestions
+
+AnotherYes Give me another suggestions
+
+AnotherNo  Do not give me another suggestions
