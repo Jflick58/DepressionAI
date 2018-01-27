@@ -175,6 +175,7 @@ def outside():
     ])
 
     session.attributes["Outside"] = "Yes"
+    session.attributes["State"] = "Suggested"
     response = evaluate_answers()
     if response == "Good job doing all those things. When you're depressed, those little things can be the most difficult.":
         suggestion_inquiry = "Let's try something else to improve your mood."
@@ -182,7 +183,7 @@ def outside():
         suggestion_inquiry = "Here's an idea for an extra way to improve your mood."
         idea = ideas()
 
-    return statement(message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Check in with me again later!")
+    return statement(message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Would you like another suggestion?")
 
 @ask.intent('OutsideNo')
 def not_outside():
@@ -195,10 +196,11 @@ def not_outside():
     ])
 
     session.attributes["Outside"] = "No"
+    session.attributes["State"] = "Suggested"
     response = evaluate_answers()
     suggestion_inquiry = "Let's also try something else to improve your mood."
     idea = ideas()
-    return statement(message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Check in with me again later!")
+    return statement(message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Would you like another suggestion?")
 
 @ask.intent('AMAZON.NoIntent')
 def handle_no():
@@ -263,15 +265,21 @@ def handle_no():
             ])
 
             session.attributes["Outside"] = "No"
+            session.attributes["State"] = "Suggested"
             response = evaluate_answers()
             suggestion_inquiry = "Let's also try something else to improve your mood."
             idea = ideas()
             return statement(
                 message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Check in with me again later!")
+        elif session.attributes["State"] == "Suggested":
+            session.attributes["State"] = "AnythingElse"
+            return question("Okay, I hope that helped. Anything else I can do for you?")
+        elif session.attributes["State"] == "AnythingElse":
+            return question("No problem. Check in with me later. Goodbye")
         else:
             return question("I'm sorry, I didn't get that. How are you feeling? ")
     except:
-        return question("I'm sorry, I didn't get that. How are you feeling? ")
+        return question("I'm sorry, I didn't get that. How are you feeling?")
 
 
 @ask.intent('AMAZON.YesIntent')
@@ -327,7 +335,6 @@ def handle_yes():
             return question(message + "            " + "Have you gone outside at all today?")
 
         elif session.attributes["State"] == "Question 5 Answered":
-            def outside():
                 message = random.choice([
                     'Awesome.',
                     'Good to hear!',
@@ -336,19 +343,36 @@ def handle_yes():
                 ])
 
                 session.attributes["Outside"] = "Yes"
+                session.attributes["State"] = "Suggested"
                 response = evaluate_answers()
                 if response == "Good job doing all those things. When you're depressed, those little things can be the most difficult.":
                     suggestion_inquiry = "Let's try something else to improve your mood."
                 else:
                     suggestion_inquiry = "Here's an idea for an extra way to improve your mood."
                     idea = ideas()
-
+                session.attributes["State"] = "AnythingElse"
                 return statement(
-                    message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Check in with me again later!")
+                    message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Is there anything else I can do?")
+        elif session.attributes["State"] == "Suggested":
+            message = "Okay, here's another idea. "
+            idea = ideas()
+            session.attributes["State"] = "Suggested"
+            return statement(
+               message + "       " + idea + "          " + "Would you like another suggestion?")
+        elif session.attributes["State"] == "AnythingElse":
+            return question("Okay, I love to help. What can I do?")
         else:
             return question("I'm sorry, I didn't get that. How are you feeling? ")
     except:
         return question("I'm sorry, I didn't get that. How are you feeling? ")
+
+@ask.intent('SuggestIdea')
+def suggest_ideas():
+    suggestion_inquiry = "Okay. Here's an idea for an extra way to improve your mood."
+    idea = ideas()
+    session.attributes["State"] = "Suggested"
+    return statement(suggestion_inquiry + "       " + idea + "          " + "Would you like another suggestion?")
+
 
 @ask.intent('AMAZON.StopIntent')
 def handle_stop():
