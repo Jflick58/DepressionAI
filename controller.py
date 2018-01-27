@@ -59,6 +59,53 @@ def condolences():
     print(random.choice(condolences))
     return (random.choice(condolences))
 
+def ideas():
+
+    ideas = [
+        "Go for a walk",
+        "Complete one chore",
+        "Play your favorite video game",
+        "Play with your pet",
+        "Watch a movie",
+        "Look at pictures from your last vacation",
+        "Put on a fancy outfit",
+        "Go thrifting",
+        "Work on your hobby",
+        "Go to the gym",
+        "Exercise",
+        "Do 10 push-ups",
+        "Wear a funky hat",
+        "Cook a delicious meal",
+        "Go window shopping",
+        "Do some Yoga",
+        "Put on 'Staying Alive' by the Bee Gees and dance!",
+        "Repair something around your house",
+        "Watch a funny Youtube video",
+        "Go for a bike ride",
+        "Doodle",
+        "Paint a picture",
+        "Call a friend and hang out",
+        "Go to your favorite coffee shop",
+        "Go for a scenic drive",
+        "Get a new haircut",
+        "Read Reddit",
+        "Listen to your favorite music",
+        "Go fishing",
+        "Gaze at the starts",
+        "Meditate",
+        "Vist a museum",
+        "Watch a video of baby pugs",
+        "Do a puzzle",
+        "Re-arrange the furniture in a room in your house",
+        "Clean your house",
+        "Do laundry",
+        "Eat chocolate cake",
+        "Make a to-do list for this week",
+        "Prep your lunch for tomorrow",
+        "Look in a mirror and tell yourself that you are awesome",
+    ]
+
+    return (random.choice(ideas))
 if __name__ == '__main__':
 
     welcome()
