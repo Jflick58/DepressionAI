@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_ask import Ask, statement, question, session
-from controller import welcome, re, condolences
+from controller import welcome, re, condolences,ideas
 import random
 
 app = Flask(__name__)
@@ -168,8 +168,10 @@ def outside():
     if response == "Good job doing all those things. When you're depressed, those little things can be the most difficult":
         suggestion_inquiry = "Let's try something else to improve your move"
     else:
-        suggestion_inquiry = "Would you like an additional idea for activites to improve your mood?"
-    return question(message)
+        suggestion_inquiry = "Here's an idea for an extra way to improve your modd"
+        idea = ideas()
+
+    return statement(message + " " + suggestion_inquiry + " " + idea + " " + "I hope I could help. Check in with me again later!")
 
 @ask.intent('OutsideNo')
 def not_outiside:
@@ -182,15 +184,10 @@ def not_outiside:
     ])
 
     session.attributes["Outside"] = "No"
-    return question(message)
-
-
-
-
-
-
-
-
+    response = evaluate_answers()
+    suggestion_inquiry = "Let's also try something else to improve your move"
+    idea = ideas()
+    return statement(message + " " + suggestion_inquiry + " " + idea + " " + "I hope I could help. Check in with me again later!")
 
 
 @ask.intent('AMAZON.StopIntent')
@@ -223,4 +220,4 @@ def handle_help():
     return question(help_text)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5500)
