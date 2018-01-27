@@ -24,9 +24,9 @@ def evaluate_answers():
     elif session.attributes["Dressed"] == "No":
         return "Alright. Well let's try getting dressed. You can do it!"
     elif session.attributes["Outside"] == "No":
-        return "Well let's try going outside. It might elate you. "
+        return "Well let's try going outside. It might elate you."
     else:
-        return "Good job doing all those things. When you're depressed, those little things can be the most difficult"
+        return "Good job doing all those things. When you're depressed, those little things can be the most difficult."
 
 
 """These functions handle intent logic for the voice interface. """
@@ -35,10 +35,10 @@ def evaluate_answers():
 def user_feels_good():
     congrats = [
         'That is so good to hear!',
-        'I am happy you feel good today',
+        'I am happy you feel good today!',
         'I am glad to hear that.',
         'Oh happy day!',
-        'Awesome.',
+        'Awesome!',
         'Good to hear!',
         'Wonderful!',
         'Great!',
@@ -71,8 +71,8 @@ def not_out_of_bed():
     message = random.choice([
         "That's too bad.",
         "That's okay, we all have days like that.",
-        "I'm sorry. ",
-        "That's too bad",
+        "I'm sorry.",
+        "That's too bad.",
         "It's okay."
     ])
 
@@ -95,7 +95,7 @@ def not_eaten():
     message = random.choice([
         "That's too bad.",
         "That's okay, we all have days like that.",
-        "I'm sorry. ",
+        "I'm sorry.",
         "That's not good.",
         "It's okay."
     ])
@@ -120,7 +120,7 @@ def not_showered():
     message = random.choice([
         "That's too bad.",
         "That's okay, we all have days like that.",
-        "I'm sorry. ",
+        "I'm sorry.",
         "That's not good.",
         "It's okay."
     ])
@@ -146,7 +146,7 @@ def not_dressed():
     message = random.choice([
         "That's too bad.",
         "That's okay, we all have days like that.",
-        "I'm sorry. ",
+        "I'm sorry.",
         "That's not good.",
         "It's okay."
     ])
@@ -171,14 +171,14 @@ def outside():
         suggestion_inquiry = "Here's an idea for an extra way to improve your mood."
         idea = ideas()
 
-    return statement(message + "  " + suggestion_inquiry + "  " + idea + " " + "I hope I could help.  Check in with me again later!")
+    return statement(message + "  " + suggestion_inquiry + "  " + idea + " " + "I hope I could help. Check in with me again later!")
 
 @ask.intent('OutsideNo')
 def not_outside():
     message = random.choice([
         "That's too bad.",
         "That's okay, we all have days like that.",
-        "I'm sorry. ",
+        "I'm sorry.",
         "That's not good.",
         "It's okay."
     ])
@@ -187,7 +187,7 @@ def not_outside():
     response = evaluate_answers()
     suggestion_inquiry = "Let's also try something else to improve your mood."
     idea = ideas()
-    return statement(message + "  " + response + "  " + suggestion_inquiry + "  " + idea + "  " + "I hope I could help.  Check in with me again later!")
+    return statement(message + "  " + response + "  " + suggestion_inquiry + "  " + idea + "  " + "I hope I could help. Check in with me again later!")
 
 
 @ask.intent('AMAZON.StopIntent')

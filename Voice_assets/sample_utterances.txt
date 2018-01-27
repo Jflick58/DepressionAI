@@ -4,7 +4,7 @@ PositiveFeeling  I feel great
 NegativeFeeling I feel bad
 NegativeFeeling I feel down
 
-BedYes  Yes, I've gotten out of bed.
+BedYes Yes, I've gotten out of bed.
 
 BedNo I have not gotten out of bed.
 
