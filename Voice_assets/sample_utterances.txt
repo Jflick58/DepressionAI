@@ -2,14 +2,13 @@ PositiveFeeling  I feel good
 PositiveFeeling  I feel great
 
 NegativeFeeling I feel bad
-NegativeFeeling I  feel down
+NegativeFeeling I feel down
 
-BedYes  I did my bed
+BedYes  Yes, I've gotten out of bed.
 
-BedNo I did not do my bed
+BedNo I have not gotten out of bed.
 
 AteYes I did eat
-
 
 AteNo I did not eat
 AteNo I'm not hungry
@@ -18,7 +17,9 @@ ShowerYes I did shower
 
 ShowerNo I did not shower
 
-DressedYes I'm dress
+DressedYes I'm dressed.
+
+DressedNo No I haven't gotten dressed
 
 OutsideYes I have been outside
 

@@ -31,7 +31,7 @@ def evaluate_answers():
 
 """These functions handle intent logic for the voice interface. """
 
-@ask.intent('Positivefeeling')
+@ask.intent('Positive')
 def user_feels_good():
     congrats = [
         'That is so good to hear!',
@@ -47,11 +47,11 @@ def user_feels_good():
 
     return statement((random.choice(congrats)) + ' ' + 'Check in with me tomorrow so I can see how you are doing!')
 
-@ask.intent('Negativefeeling')
+@ask.intent('Negative')
 def user_feels_bad():
     condolence = condolences()
 
-    return question(condolence + "Have you gotten out of bed today?")
+    return question(condolence + "." + "Have you gotten out of bed today?")
 
 @ask.intent('BedYes')
 def out_of_bed():
@@ -165,16 +165,16 @@ def outside():
 
     session.attributes["Outside"] = "Yes"
     response = evaluate_answers()
-    if response == "Good job doing all those things. When you're depressed, those little things can be the most difficult":
-        suggestion_inquiry = "Let's try something else to improve your move"
+    if response == "Good job doing all those things. When you're depressed, those little things can be the most difficult.":
+        suggestion_inquiry = "Let's try something else to improve your mood."
     else:
-        suggestion_inquiry = "Here's an idea for an extra way to improve your modd"
+        suggestion_inquiry = "Here's an idea for an extra way to improve your mood."
         idea = ideas()
 
-    return statement(message + " " + suggestion_inquiry + " " + idea + " " + "I hope I could help. Check in with me again later!")
+    return statement(message + "  " + suggestion_inquiry + "  " + idea + " " + "I hope I could help.  Check in with me again later!")
 
 @ask.intent('OutsideNo')
-def not_outiside:
+def not_outside():
     message = random.choice([
         "That's too bad.",
         "That's okay, we all have days like that.",
@@ -185,9 +185,9 @@ def not_outiside:
 
     session.attributes["Outside"] = "No"
     response = evaluate_answers()
-    suggestion_inquiry = "Let's also try something else to improve your move"
+    suggestion_inquiry = "Let's also try something else to improve your mood."
     idea = ideas()
-    return statement(message + " " + suggestion_inquiry + " " + idea + " " + "I hope I could help. Check in with me again later!")
+    return statement(message + "  " + response + "  " + suggestion_inquiry + "  " + idea + "  " + "I hope I could help.  Check in with me again later!")
 
 
 @ask.intent('AMAZON.StopIntent')
@@ -220,4 +220,4 @@ def handle_help():
     return question(help_text)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5500)
+    app.run(debug=True, port=5000)
