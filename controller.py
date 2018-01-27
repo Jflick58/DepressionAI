@@ -1,10 +1,6 @@
 import random
 
-<<<<<<< HEAD
 def welcome():
-=======
-def random_welcome():
->>>>>>> 291d75f02a639ec57a842c8a987e844f6ea5af41
     greetings = [
         'Hi,',
         'Hello,'
@@ -33,7 +29,6 @@ def random_welcome():
 
     return (welcome)
 
-<<<<<<< HEAD
 def re():
     reprompts = [
         'Are you still there?',
@@ -54,9 +49,3 @@ if __name__ == '__main__':
 
     welcome()
     re()
-=======
-
-if __name__ == '__main__':
-
-    random_welcome()
->>>>>>> 291d75f02a639ec57a842c8a987e844f6ea5af41
