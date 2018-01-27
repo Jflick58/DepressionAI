@@ -276,10 +276,79 @@ def handle_no():
 
 @ask.intent('AMAZON.YesIntent')
 def handle_yes():
-    """
-    (?) Handles the 'yes'  built-in intention.
-    """
-    pass
+    try:
+        if session.attributes["State"] == "Question 0 Answered":
+            return statement("Okay. What can I do for you?")
+
+        elif session.attributes["State"] == "Question 1 Answered":
+            message = random.choice([
+                'Awesome.',
+                'Good to hear!',
+                'Wonderful!',
+                'Great!',
+            ])
+            session.attributes["Bed"] = "Yes"
+            session.attributes["State"] = "Question 2 Answered"
+            return question(message + "         " + "Have you eaten today?")
+
+        elif session.attributes["State"] == "Question 2 Answered":
+            message = random.choice([
+                'Awesome.',
+                'Good to hear!',
+                'Wonderful!',
+                'Great!',
+            ])
+            session.attributes["Eaten"] = "Yes"
+            session.attributes["State"] = "Question 3 Answered"
+            return question(message + "           " + "Have you showered today?")
+
+        elif session.attributes["State"] == "Question 3 Answered":
+            message = random.choice([
+                'Awesome.',
+                'Good to hear!',
+                'Wonderful!',
+                'Great!',
+            ])
+
+            session.attributes["Showered"] = "Yes"
+            session.attributes["State"] = "Question 4 Answered"
+            return question(message + " " + "Have you gotten dressed?")
+
+        elif session.attributes["State"] == "Question 4 Answered":
+            message = random.choice([
+                'Awesome.',
+                'Good to hear!',
+                'Wonderful!',
+                'Great!',
+            ])
+
+            session.attributes["Dressed"] = "Yes"
+            session.attributes["State"] = "Question 5 Answered"
+            return question(message + "            " + "Have you gone outside at all today?")
+
+        elif session.attributes["State"] == "Question 5 Answered":
+            def outside():
+                message = random.choice([
+                    'Awesome.',
+                    'Good to hear!',
+                    'Wonderful!',
+                    'Great!',
+                ])
+
+                session.attributes["Outside"] = "Yes"
+                response = evaluate_answers()
+                if response == "Good job doing all those things. When you're depressed, those little things can be the most difficult.":
+                    suggestion_inquiry = "Let's try something else to improve your mood."
+                else:
+                    suggestion_inquiry = "Here's an idea for an extra way to improve your mood."
+                    idea = ideas()
+
+                return statement(
+                    message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Check in with me again later!")
+        else:
+            return question("I'm sorry, I didn't get that. How are you feeling? ")
+    except:
+        return question("I'm sorry, I didn't get that. How are you feeling? ")
 
 @ask.intent('AMAZON.StopIntent')
 def handle_stop():
