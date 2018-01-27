@@ -3,7 +3,7 @@ import random
 def welcome():
     greetings = [
         'Hi,',
-        'Hello,'
+        'Hello,',
         'Good day,',
         'Hola,',
         'Howdy,',
@@ -34,7 +34,7 @@ def re():
         'Are you still there?',
         'Did you leave?',
         'Did you still want me to check in on you?',
-        'Hello?'
+        'Hello?',
         'Are you there?'
     ]
 
@@ -44,8 +44,23 @@ def re():
 def help_message():
     return "Say 'help' if you need assistance."
 
+def condolences():
+    condolences = [
+        "I'm sorry to hear that.",
+        "I'm sorry you aren't feeling good.",
+        "I'm so sorry you feel like that.",
+        "I'm sorry, it's going to get better.",
+        "Well that's not ideal.",
+        "That's too bad.",
+        "Your emotions are important during this time, and I’m happy to help you shoulder them.",
+        "I promise it gets better. ",
+        "I'm sorry, but I am here for you."
+    ]
+    print(random.choice(condolences))
+    return (random.choice(condolences))
 
 if __name__ == '__main__':
 
     welcome()
     re()
+    condolences()
