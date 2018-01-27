@@ -1,6 +1,6 @@
 import random
 
-def random_welcome():
+def welcome():
     greetings = [
         'Hi,',
         'Hello,'
@@ -29,7 +29,23 @@ def random_welcome():
 
     return (welcome)
 
+def re():
+    reprompts = [
+        'Are you still there?',
+        'Did you leave?',
+        'Did you still want me to check in on you?',
+        'Hello?'
+        'Are you there?'
+    ]
+
+    print((random.choice(reprompts)) + " " + (help_message()))
+    return ((random.choice(reprompts)) + " " + (help_message()))
+
+def help_message():
+    return "Say 'help' if you need assistance."
+
 
 if __name__ == '__main__':
 
-    random_welcome()
+    welcome()
+    re()
