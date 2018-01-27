@@ -16,35 +16,189 @@ NegativeFeeling bad
 NegativeFeeling crappy
 NegativeFeeling shitty
 NegativeFeeling I felt better
-NegativeFeeling
-NegativeFeeling
-NegativeFeeling
-NegativeFeeling
+NegativeFeeling crap
+NegativeFeeling terrible
+NegativeFeeling Down in the gutter
+NegativeFeeling Horrible
 
-BedYes  I did my bed
+BedYes I did my bed
+BedYes Done
+BedYes Yes
+BedYes I did
+BedYes Of course
+BedYes Yeah
+BedYes Si
+BedYes I don't play
+BedYes Yes Alexa
+BedYes Yes I did my bed
+BedYes Yes it's easy
 
 BedNo I did not do my bed
+BedNo No
+BedNo Fuck no
+BedNo Nah
+BedNo Nope
+BedNo You should
+BedNo Not me
+BedNo That's why i have my mom
+BedNo No Alexa
+BedNo Don't be silly
+BedNo No I did not do my bas
 
 AteYes I did eat
-
+AteYes I had a snack
+AteYes Yes
+AteYes Si
+AteYes I have food comma
+AteYes Yes I'm full
+AteYes Yep
+AteYes Yeah
+AteYes aha
+AteYes Yes sir
+AteYes Yes Alexa
 
 AteNo I did not eat
 AteNo I'm not hungry
+AteNo No Alexa
+AteNo Nah
+AteNo I'm not hungry
+AteNo Cool bro
+AteNo not hungry
+AteNo full
+AteNo i'm on a diet
+AteNo Soon
+AteNo Later
 
 ShowerYes I did shower
+ShowerYes Yes
+ShowerYes Yes Alexa
+ShowerYes Yeah
+ShowerYes I did
+ShowerYes Si
+ShowerYes Of course
+ShowerYes Yep
+ShowerYes lol yes
+ShowerYes Yes I'm clean
+ShowerYes Ha yes
 
 ShowerNo I did not shower
+ShowerNo Nope
+ShowerNo Later
+ShowerNo Maybe later
+ShowerNo Nah
+ShowerNo Nah
+ShowerNo Yeah right
+ShowerNo haha
+ShowerNo yolo
+ShowerNo aha
+ShowerNo ha
 
 DressedYes I'm dress
+DressedYes Yes I'm ready
+DressedYes Yeah
+DressedYes Yep
+DressedYes Yes sir
+DressedYes Yes I'm dress
+DressedYes Si
+DressedYes Of course
+DressedYes Lol yes
+DressedYes Ha yes
+DressedYes Haha yes
 
 OutsideYes I have been outside
+OutsideYes Yes
+OutsideYes Of course
+OutsideYes Yep
+OutsideYes Yes I have been outside
+OutsideYes Yep I have been outside
+OutsideYes In the morning
+OutsideYes Yes sir
+OutsideYes Ha yes
+OutsideYes Si
+OutsideYes Yeah
 
 OutsideNo I have not been outside
+OutsideNo Maybe later
+OutsideNo Nah
+OutsideNo Nope
+OutsideNo Ha no
+OutsideNo I should
+OutsideNo Later
+OutsideNo I been in bed all day
+OutsideNo I don't go outside
+OutsideNo Not for me
+OutsideNo No I have not been outside
 
 SuggestionYes Give me suggestions
+SuggestionYes Suggestions
+SuggestionYes Any ideas
+SuggestionYes ideas
+SuggestionYes Give me an example
+SuggestionYes Examples
+SuggestionYes Any suggestions
+SuggestionYes Any examples
+SuggestionYes Suggestion
+SuggestionYes Give me a suggestion
+SuggestionYes Give me ideas
 
 SuggestionNo Do not give suggestions
+SuggestionNo Please stop
+SuggestionNo Stop
+SuggestionNo Shut up
+SuggestionNo Go away
+SuggestionNo Nah
+SuggestionNo Nope
+SuggestionNo Maybe later
+SuggestionNo No suggestions
+SuggestionNo Stop no suggestions
+SuggestionNo Nope no suggestions
 
 AnotherYes Give me another suggestions
+AnotherYes Give me more suggestions
+AnotherYes More please
+AnotherYes one more
+AnotherYes Another one
+AnotherYes yes more
+AnotherYes yes one more
+AnotherYes Give me another suggestion
+AnotherYes Keep them coming
+AnotherYes Yeah
+AnotherYes Yes
 
-AnotherNo  Do not give me another suggestions
+AnotherNo Do not give me another suggestions
+AnotherNo Stop
+AnotherNo Go away
+AnotherNo Please stop
+AnotherNo No more
+AnotherNo Stop no more
+AnotherNo Enough
+AnotherNo I'm tired of you
+AnotherNo Shut up
+AnotherNo Maybe later
+AnotherNo Nope more suggestions
+
+HotLine Hurting
+HotLine I'm in pain
+HotLine I'm suicidal
+HotLine I'm gonna shoot myself
+HotLine I'm giving up in the life
+HotLine I'm a burden to my family
+HotLine I'm hopeless
+HotLine I'm worthless
+HotLine kill me
+HotLine shoot me
+HotLine I cut myself
+HotLine I try to overdose
+
+SuggestIdea Motivate me
+SuggestIdea Give me pick a me up
+SuggestIdea Stoke my ego
+SuggestIdea pull up my ego
+SuggestIdea motivation
+SuggestIdea Encourage me
+SuggestIdea Cheer me up
+SuggestIdea Make me feel good
+SuggestIdea Make me feel better
+SuggestIdea Give me joy
+SuggestIdea Cheer me
+
