@@ -5,7 +5,6 @@ import random
 
 app = Flask(__name__)
 ask = Ask(app, '/')
-answers = []
 
 @ask.launch
 def start_session():
@@ -31,7 +30,7 @@ def evaluate_answers():
 
 """These functions handle intent logic for the voice interface. """
 
-@ask.intent('Positivefeeling')
+@ask.intent('Positive')
 def user_feels_good():
     congrats = [
         'That is so good to hear!',
@@ -45,13 +44,16 @@ def user_feels_good():
         'I am so happy about that!'
     ]
 
-    return statement((random.choice(congrats)) + ' ' + 'Check in with me tomorrow so I can see how you are doing!')
+    session.attributes["feeling"] = "Good"
+    session.attributes["State"] = "Question 0 Answered"
+    return question((random.choice(congrats)) + '      ' + 'Is there anything else you need?')
 
-@ask.intent('Negativefeeling')
+@ask.intent('Negative')
 def user_feels_bad():
     condolence = condolences()
-
-    return question(condolence + "Have you gotten out of bed today?")
+    session.attributes["feeling"] = "Down"
+    session.attributes["State"] = "Question 1 Answered"
+    return question(condolence + "       " + "Have you gotten out of bed today?")
 
 @ask.intent('BedYes')
 def out_of_bed():
@@ -63,7 +65,8 @@ def out_of_bed():
                 'Great!',
     ])
     session.attributes["Bed"] = "Yes"
-    return question (message + " " + "Have you eaten today?")
+    session.attributes["State"] = "Question 2 Answered"
+    return question (message + "         " + "Have you eaten today?")
 
 @ask.intent('BedNo')
 def not_out_of_bed():
@@ -76,8 +79,10 @@ def not_out_of_bed():
         "It's okay."
     ])
 
+    session.attributes["State"] = "Question 2 Answered"
     session.attributes["Bed"] = "No"
-    return question(message + " " + "Have you eaten today?")
+    return question(message + "            " + "Have you eaten today?")
+
 
 @ask.intent('AteYes')
 def eaten():
@@ -88,7 +93,8 @@ def eaten():
         'Great!',
     ])
     session.attributes["Eaten"] = "Yes"
-    return question(message + " " + "Have you showered today?")
+    session.attributes["State"] = "Question 3 Answered"
+    return question(message + "           " + "Have you showered today?")
 
 @ask.intent('AteNo')
 def not_eaten():
@@ -101,7 +107,8 @@ def not_eaten():
     ])
 
     session.attributes["Eaten"] = "No"
-    return question(message + " " + "Have you showered today?")
+    session.attributes["State"] = "Question 3 Answered"
+    return question(message + "            " + "Have you showered today?")
 
 @ask.intent('ShowerYes')
 def showered():
@@ -113,6 +120,7 @@ def showered():
     ])
 
     session.attributes["Showered"] = "Yes"
+    session.attributes["State"] = "Question 4 Answered"
     return question(message + " " + "Have you gotten dressed?")
 
 @ask.intent('ShowerNo')
@@ -126,7 +134,8 @@ def not_showered():
     ])
 
     session.attributes["Showered"] = "No"
-    return question(message + " " + "Have you gotten dressed?")
+    session.attributes["State"] = "Question 4 Answered"
+    return question(message + "            " + "Have you gotten dressed?")
 
 @ask.intent('DressedYes')
 def dressed():
@@ -137,8 +146,9 @@ def dressed():
         'Great!',
     ])
 
-    session.attributes["Outside"] = "Yes"
-    return question(message + " " + "Have you gone outside at all today?")
+    session.attributes["Dressed"] = "Yes"
+    session.attributes["State"] = "Question 5 Answered"
+    return question(message + "            " + "Have you gone outside at all today?")
 
 
 @ask.intent('DressedNo')
@@ -151,8 +161,9 @@ def not_dressed():
         "It's okay."
     ])
 
-    session.attributes["Showered"] = "No"
-    return question(message + " " + "Have you gone outside at all today?")
+    session.attributes["Dressed"] = "No"
+    session.attributes["State"] = "Question 5 Answered"
+    return question(message + "         " + "Have you gone outside at all today?")
 
 @ask.intent('OutsideYes')
 def outside():
@@ -164,17 +175,18 @@ def outside():
     ])
 
     session.attributes["Outside"] = "Yes"
+    session.attributes["State"] = "Suggested"
     response = evaluate_answers()
-    if response == "Good job doing all those things. When you're depressed, those little things can be the most difficult":
-        suggestion_inquiry = "Let's try something else to improve your move"
+    if response == "Good job doing all those things. When you're depressed, those little things can be the most difficult.":
+        suggestion_inquiry = "Let's try something else to improve your mood."
     else:
-        suggestion_inquiry = "Here's an idea for an extra way to improve your modd"
+        suggestion_inquiry = "Here's an idea for an extra way to improve your mood."
         idea = ideas()
 
-    return statement(message + " " + suggestion_inquiry + " " + idea + " " + "I hope I could help. Check in with me again later!")
+    return statement(message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Would you like another suggestion?")
 
 @ask.intent('OutsideNo')
-def not_outiside():
+def not_outside():
     message = random.choice([
         "That's too bad.",
         "That's okay, we all have days like that.",
@@ -184,10 +196,183 @@ def not_outiside():
     ])
 
     session.attributes["Outside"] = "No"
+    session.attributes["State"] = "Suggested"
     response = evaluate_answers()
-    suggestion_inquiry = "Let's also try something else to improve your move"
+    suggestion_inquiry = "Let's also try something else to improve your mood."
     idea = ideas()
-    return statement(message + " " + suggestion_inquiry + " " + idea + " " + "I hope I could help. Check in with me again later!")
+    return statement(message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Would you like another suggestion?")
+
+@ask.intent('AMAZON.NoIntent')
+def handle_no():
+    try:
+        if session.attributes["State"] == "Question 0 Answered":
+            return statement("Okay. Check in with me again later!")
+        elif session.attributes["State"] == "Question 1 Answered":
+            message = random.choice([
+                "That's too bad.",
+                "That's okay, we all have days like that.",
+                "I'm sorry. ",
+                "That's too bad",
+                "It's okay."
+            ])
+
+            session.attributes["State"] = "Question 2 Answered"
+            session.attributes["Bed"] = "No"
+            return question(message + "            " + "Have you eaten today?")
+        elif session.attributes["State"] == "Question 2 Answered":
+            message = random.choice([
+                "That's too bad.",
+                "That's okay, we all have days like that.",
+                "I'm sorry. ",
+                "That's not good.",
+                "It's okay."
+            ])
+
+            session.attributes["Eaten"] = "No"
+            session.attributes["State"] = "Question 3 Answered"
+            return question(message + "            " + "Have you showered today?")
+        elif session.attributes["State"] == "Question 3 Answered":
+            message = random.choice([
+                "That's too bad.",
+                "That's okay, we all have days like that.",
+                "I'm sorry. ",
+                "That's not good.",
+                "It's okay."
+            ])
+
+            session.attributes["Showered"] = "No"
+            session.attributes["State"] = "Question 4 Answered"
+            return question(message + "            " + "Have you gotten dressed?")
+        elif session.attributes["State"] == "Question 4 Answered":
+            message = random.choice([
+                "That's too bad.",
+                "That's okay, we all have days like that.",
+                "I'm sorry. ",
+                "That's not good.",
+                "It's okay."
+            ])
+
+            session.attributes["Dressed"] = "No"
+            session.attributes["State"] = "Question 5 Answered"
+            return question(message + "         " + "Have you gone outside at all today?")
+        elif session.attributes["State"] == "Question 5 Answered":
+            message = random.choice([
+                "That's too bad.",
+                "That's okay, we all have days like that.",
+                "I'm sorry. ",
+                "That's not good.",
+                "It's okay."
+            ])
+
+            session.attributes["Outside"] = "No"
+            session.attributes["State"] = "Suggested"
+            response = evaluate_answers()
+            suggestion_inquiry = "Let's also try something else to improve your mood."
+            idea = ideas()
+            return statement(
+                message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Check in with me again later!")
+        elif session.attributes["State"] == "Suggested":
+            session.attributes["State"] = "AnythingElse"
+            return question("Okay, I hope that helped. Anything else I can do for you?")
+        elif session.attributes["State"] == "AnythingElse":
+            return question("No problem. Check in with me later. Goodbye")
+        else:
+            return question("I'm sorry, I didn't get that. How are you feeling? ")
+    except:
+        return question("I'm sorry, I didn't get that. How are you feeling?")
+
+
+@ask.intent('AMAZON.YesIntent')
+def handle_yes():
+    try:
+        if session.attributes["State"] == "Question 0 Answered":
+            return statement("Okay. What can I do for you?")
+
+        elif session.attributes["State"] == "Question 1 Answered":
+            message = random.choice([
+                'Awesome.',
+                'Good to hear!',
+                'Wonderful!',
+                'Great!',
+            ])
+            session.attributes["Bed"] = "Yes"
+            session.attributes["State"] = "Question 2 Answered"
+            return question(message + "         " + "Have you eaten today?")
+
+        elif session.attributes["State"] == "Question 2 Answered":
+            message = random.choice([
+                'Awesome.',
+                'Good to hear!',
+                'Wonderful!',
+                'Great!',
+            ])
+            session.attributes["Eaten"] = "Yes"
+            session.attributes["State"] = "Question 3 Answered"
+            return question(message + "           " + "Have you showered today?")
+
+        elif session.attributes["State"] == "Question 3 Answered":
+            message = random.choice([
+                'Awesome.',
+                'Good to hear!',
+                'Wonderful!',
+                'Great!',
+            ])
+
+            session.attributes["Showered"] = "Yes"
+            session.attributes["State"] = "Question 4 Answered"
+            return question(message + " " + "Have you gotten dressed?")
+
+        elif session.attributes["State"] == "Question 4 Answered":
+            message = random.choice([
+                'Awesome.',
+                'Good to hear!',
+                'Wonderful!',
+                'Great!',
+            ])
+
+            session.attributes["Dressed"] = "Yes"
+            session.attributes["State"] = "Question 5 Answered"
+            return question(message + "            " + "Have you gone outside at all today?")
+
+        elif session.attributes["State"] == "Question 5 Answered":
+                message = random.choice([
+                    'Awesome.',
+                    'Good to hear!',
+                    'Wonderful!',
+                    'Great!',
+                ])
+
+                session.attributes["Outside"] = "Yes"
+                session.attributes["State"] = "Suggested"
+                response = evaluate_answers()
+                if response == "Good job doing all those things. When you're depressed, those little things can be the most difficult.":
+                    suggestion_inquiry = "Let's try something else to improve your mood."
+                else:
+                    suggestion_inquiry = "Here's an idea for an extra way to improve your mood."
+                    idea = ideas()
+                session.attributes["State"] = "AnythingElse"
+                return statement(
+                    message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Is there anything else I can do?")
+        elif session.attributes["State"] == "Suggested":
+            message = "Okay, here's another idea. "
+            idea = ideas()
+            session.attributes["State"] = "Suggested"
+            return statement(
+               message + "       " + idea + "          " + "Would you like another suggestion?")
+        elif session.attributes["State"] == "AnythingElse":
+            return question("Okay, I love to help. What can I do?")
+        else:
+            return question("I'm sorry, I didn't get that. How are you feeling? ")
+    except:
+        return question("I'm sorry, I didn't get that. How are you feeling? ")
+
+
+@ask.intent('SuggestIdea')
+def suggest_ideas():
+    suggestion_inquiry = "Okay. Here's an idea for an extra way to improve your mood."
+    idea = ideas()
+    session.attributes["State"] = "Suggested"
+    return statement(suggestion_inquiry + "       " + idea + "          " + "Would you like another suggestion?")
 
 
 @ask.intent('AMAZON.StopIntent')
@@ -225,6 +410,5 @@ def hot_line():
     return statement('Call 1-800-273-8255') \
       .simple_card(title='Suicide Hot Line', content='Call Now')
 
-
 if __name__ == '__main__':
-    app.run(debug=True, port=5500)
+    app.run(debug=True, port=5000)

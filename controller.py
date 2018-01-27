@@ -91,7 +91,7 @@ def ideas():
         "Go fishing?",
         "Gaze at the starts?",
         "Meditate?",
-        "Vist a museum?",
+        "Visit a museum?",
         "Watch a video of baby pugs?",
         "Do a puzzle?",
         "Re-arrange the furniture in a room in your house?",

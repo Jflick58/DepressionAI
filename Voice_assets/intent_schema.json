@@ -65,6 +65,13 @@
     },
     {
       "intent": "AnotherNo"
+    },
+    {
+      "intent": "HotLine"
+    },
+    {
+      "intent": "SuggestIdea"
     }
+
   ]
 }
