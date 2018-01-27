@@ -1,0 +1,29 @@
+Metadata-Version: 2.0
+Name: Flask-Ask
+Version: 0.9.7
+Summary: Rapid Alexa Skills Kit Development for Amazon Echo Devices in Python
+Home-page: https://github.com/johnwheeler/flask-ask
+Author: John Wheeler
+Author-email: john@johnwheeler.org
+License: Apache 2.0
+Platform: any
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Framework :: Flask
+Classifier: Programming Language :: Python
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: Flask (==0.12.1)
+Requires-Dist: PyYAML (==3.12)
+Requires-Dist: aniso8601 (==1.2.0)
+Requires-Dist: pyOpenSSL (==17.0.0)
+Requires-Dist: six (==1.10.0)
+
+Flask-Ask
+-------------
+
+Easy Alexa Skills Kit integration for Flask
+
+
