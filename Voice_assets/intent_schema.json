@@ -20,6 +20,51 @@
     },
     {
       "intent": "AMAZON.StartOverIntent"
+    },
+    {
+      "intent": "PositiveFeeling"
+    },
+    {
+      "intent": "NegativeFeeling"
+    },
+    {
+      "intent": "BedYes"
+    },
+    {
+      "intent": "BedNo"
+    },
+    {
+      "intent": "AteYes"
+    },
+    {
+      "intent": "AteNo"
+    },
+    {
+      "intent": "ShowerYes"
+    },
+    {
+      "intent": "ShowerNo"
+    },
+    {
+      "intent": "DressedYes"
+    },
+    {
+      "intent": "OutsideYes"
+    },
+    {
+      "intent": "OutsideNo"
+    },
+    {
+      "intent": "SuggestionYes"
+    },
+    {
+      "intent": "SuggestionNo"
+    },
+    {
+      "intent": "AnotherYes"
+    },
+    {
+      "intent": "AnotherNo"
     }
   ]
 }
