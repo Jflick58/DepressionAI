@@ -59,6 +59,9 @@
     },
     {
       "intent": "HotLine"
+    },
+    {
+      "intent": "FindTherapist"
     }
   ]
 }

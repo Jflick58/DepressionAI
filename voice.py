@@ -15,6 +15,7 @@ def start_session():
 
     return question(welcome_text).reprompt(welcome_re_text)
 
+
 def evaluate_answers():
     if session.attributes["Bed"] == "No":
         return "Okay, well let's start by getting out of bed. You can do it!"
@@ -40,25 +41,9 @@ def get_alexa_location():
         print(r.json())
         return(r.json())
 
-# def find_therapist():
-#     keyword = "counseling OR therapist OR psychiatrist"
-#     alexa_location = get_alexa_location()
-#     geolocator = Nominatim()  # Set provider of geo-data
-#     address = "{}, {}".format(alexa_location["addressLine1"].encode("utf-8"),
-#                               alexa_location["city"].encode("utf-8"))
-#     location = geolocator.geocode(address)
-#     key = "AIzaSyA1yY-DOHIun0v_7kTwa_U5Ah6Am-kcjCM"
-#     print(address)
-#     print(location.latitude, location.longitude)
-#     URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={}&radius=35&keyword={}&key={}".format(location,keyword,key)
-#     r = requests.get(URL)
-#     if r.status_code == 200:
-#         first_output = r.json()
-#     print(first_output['results'])
-
 """These functions handle intent logic for the voice interface. """
 
-@ask.intent('Positive')
+@ask.intent('PositiveFeeling')
 def user_feels_good():
     congrats = [
         'That is so good to hear!',
@@ -76,7 +61,7 @@ def user_feels_good():
     session.attributes["State"] = "Question 0 Answered"
     return question((random.choice(congrats)) + '      ' + 'Is there anything else you need? Want to send a report? Want me to reccommend a therapist?')
 
-@ask.intent('Negative')
+@ask.intent('NegativeFeeling')
 def user_feels_bad():
     condolence = condolences()
     session.attributes["feeling"] = "Down"
@@ -404,13 +389,48 @@ def suggest_ideas():
 @ask.intent('HotLine')
 def hot_line():
     return statement("""Please don't hurt yourself or anyone else. I may just be a robot, but I
-                    was created by  person who wants to help you and thinks you are worth it.
-                    Please call the national suicide hotline at 1-800-273-8255 they can talk to you 24 hours a day, 7 days a week.
+                    was created by a person who wants to help you and thinks you are worth it.
+                    Please call the National Suicide Prevention Hotline at 1-800-273-8255. They are available to  talk to you 24 hours a day, 7 days a week.
                     I've placed their number on a card in your Alexa app for reference.""") \
-      .simple_card(title='Suicide Hot Line', content='Call Now 1-800-273-8255 ' )
+      .standard_card(title='National Suicide Prevention Hot Line', text='Call Now 1-800-273-8255 ', large_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Lifelinelogo.svg/1200px-Lifelinelogo.svg.png' )
 
 
-
+@ask.intent('FindTherapist')
+def find_therapist():
+    keyword = "counseling OR therapist OR psychiatrist"
+    alexa_location = get_alexa_location()
+    geolocator = Nominatim()  # Set provider of geo-data
+    address = "{}, {}".format(alexa_location["addressLine1"].encode("utf-8"),
+                              alexa_location["city"].encode("utf-8"))
+    location = geolocator.geocode(address)
+    key = "AIzaSyA1yY-DOHIun0v_7kTwa_U5Ah6Am-kcjCM"
+    print(address)
+    print(location.latitude, location.longitude)
+    URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?location={}&query={}&key={}".format(location,keyword,key)
+    #print(URL)
+    r = requests.get(URL)
+    if r.status_code == 200:
+        first_output = r.json()
+    else:
+        return "Sorry, I'm having trouble doing that right now. Please try again later."
+    results = first_output['results']
+    idnum = (results[1]['place_id'])
+    name = (results[1]['place_id'])
+    # print(results[1])
+    # print(idnum)
+    URL2 = "https://maps.googleapis.com/maps/api/place/details/json?placeid={}&key={}".format(idnum, key)
+    r2 = requests.get(URL2)
+    if r2.status_code == 200:
+        second_output = r2.json()
+        phone = (second_output['result'])['international_phone_number']
+        # print(second_output)
+        # print(phone)
+        return statement("""I've found a therapist near you. Their name is {}, and their number is {}. I've added their
+        contact info to a card in the Alexa app. Is there anything else I can do?""").standard_card(title="I've found you a possible therapist",
+                text="Name:{} \n Phone:{}",
+                large_image_url="https://images.unsplash.com/photo-1489533119213-66a5cd877091?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7c006c52fd09caf4e97536de8fcf5067&auto=format&fit=crop&w=1051&q=80").format(name,phone)
+    else:
+        return statement("Sorry, I'm having trouble doing that right now. Please try again later.")
 
 @ask.intent('AMAZON.StopIntent')
 def handle_stop():

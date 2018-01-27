@@ -125,9 +125,22 @@ def find_therapist():
     r = requests.get(URL)
     if r.status_code == 200:
         first_output = r.json()
-    for result in first_output['results']:
-        print(result['name'])
-    return(first_output['results'])
+    else:
+        return "Sorry, I'm having trouble doing that right now. Please try again later."
+    results = first_output['results']
+    idnum = (results[1]['place_id'])
+    name = (results[1]['place_id'])
+    # print(results[1])
+    # print(idnum)
+    URL2 = "https://maps.googleapis.com/maps/api/place/details/json?placeid={}&key={}".format(idnum, key)
+    r2 = requests.get(URL2)
+    if r2.status_code == 200:
+        second_output = r2.json()
+        phone = (second_output['result'])['international_phone_number']
+        # print(second_output)
+        # print(phone)
+    else:
+        return "Sorry, I'm having trouble doing that right now. Please try again later."
 
 if __name__ == '__main__':
 

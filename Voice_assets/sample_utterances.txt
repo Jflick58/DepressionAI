@@ -15,6 +15,20 @@ PositiveFeeling great
 PositiveFeeling okay
 PositiveFeeling not bad
 
+FindTherapist help me find a therapist
+FindTherapist I would like therapy
+FindTherapist can you find me a therapist
+FindTherapist can you find me a psychologist
+FindTherapist can you find me a counselor
+FindTherapist help me find a therapist
+FindTherapist help me find a counselor
+FindTherapist help me find a psychologist
+FindTherapist please find me a therapist
+FindTherapist please find me a counselor
+FindTherapist please find me a psychologist
+FindTherapist locate a therapist
+FindTherapist locate therapy
+
 NegativeFeeling I feel bad
 NegativeFeeling I feel down
 NegativeFeeling feel like shit
