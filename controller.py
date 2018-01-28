@@ -1,5 +1,19 @@
 import random
 import requests
+from flask_ask import context
+
+def get_alexa_location():
+    URL = "https://api.amazonalexa.com/v1/devices/{}/settings" \
+          "/address".format(context.System.device.deviceId)
+    TOKEN = context.System.user.permissions.consentToken
+    HEADER = {'Accept': 'application/json',
+              'Authorization': 'Bearer {}'.format(TOKEN)}
+    r = requests.get(URL, headers=HEADER)
+    if r.status_code == 200:
+        alexa_location = r.json()
+    address = "{} {}".format(alexa_location["addressLine1"],
+                             alexa_location["city"])
+    return address
 
 def welcome():
     greetings = [
@@ -63,85 +77,52 @@ def condolences():
 def ideas():
 
     ideas = [
-        "Go for a walk",
-        "Complete one chore",
-        "Play your favorite video game",
-        "Play with your pet",
-        "Watch a movie",
-        "Look at pictures from your last vacation",
-        "Put on a fancy outfit",
-        "Go thrifting",
-        "Work on your hobby",
-        "Go to the gym",
-        "Exercise",
-        "Do 10 push-ups",
-        "Wear a funky hat",
-        "Cook a delicious meal",
-        "Go window shopping",
-        "Do some Yoga",
+        "Go for a walk.",
+        "Complete one chore.",
+        "Play your favorite video game.",
+        "Play with your pet.",
+        "Watch a movie.",
+        "Look at pictures from your last vacation.",
+        "Put on a fancy outfit.",
+        "Go thrifting.",
+        "Work on your hobby.",
+        "Go to the gym.",
+        "Exercise.",
+        "Do 10 push-ups.",
+        "Wear a funky hat.",
+        "Cook a delicious meal.",
+        "Go window shopping.",
+        "Do some Yoga.",
         "Put on 'Staying Alive' by the Bee Gees and dance!",
-        "Repair something around your house",
-        "Watch a funny Youtube video",
-        "Go for a bike ride",
-        "Doodle",
-        "Paint a picture",
-        "Call a friend and hang out",
-        "Go to your favorite coffee shop",
-        "Go for a scenic drive",
-        "Get a new haircut",
-        "Read Reddit",
-        "Listen to your favorite music",
-        "Go fishing",
-        "Gaze at the starts",
-        "Meditate",
-        "Vist a museum",
-        "Watch a video of baby pugs",
-        "Do a puzzle",
-        "Re-arrange the furniture in a room in your house",
-        "Clean your house",
-        "Do laundry",
-        "Eat chocolate cake",
-        "Make a to-do list for this week",
-        "Prep your lunch for tomorrow",
-        "Look in a mirror and tell yourself that you are awesome",
+        "Repair something around your house.",
+        "Watch a funny Youtube video.",
+        "Go for a bike ride.",
+        "Doodle.",
+        "Paint a picture.",
+        "Call a friend and hang out.",
+        "Go to your favorite coffee shop.",
+        "Go for a scenic drive.",
+        "Get a new haircut.",
+        "Read Reddit.",
+        "Listen to your favorite music.",
+        "Go fishing.",
+        "Gaze at the starts.",
+        "Meditate.",
+        "Vist a museum.",
+        "Watch a video of baby pugs.",
+        "Do a puzzle.",
+        "Re-arrange the furniture in a room in your house.",
+        "Clean your house.",
+        "Do laundry.",
+        "Eat chocolate cake.",
+        "Make a to-do list for this week.",
+        "Prep your lunch for tomorrow.",
+        "Look in a mirror and tell yourself that you are awesome.",
     ]
 
     return (random.choice(ideas))
 
 
-def find_therapist():
-    keyword = "counseling"
-    #alexa_location = get_alexa_location()
-    #geolocator = Nominatim()  # Set provider of geo-data
-    #address = "{}, {}".format(alexa_location["addressLine1"].encode("utf-8"),
-            #                  alexa_location["city"].encode("utf-8"))
-    #location = geolocator.geocode(address
-    location = "37.7056720,-121.0705940"
-    key = "AIzaSyA1yY-DOHIun0v_7kTwa_U5Ah6Am-kcjCM"
-    #print(address)
-    #print(location.latitude, location.longitude)
-    URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?location={}&query={}&key={}".format(location,keyword,key)
-    print(URL)
-    r = requests.get(URL)
-    if r.status_code == 200:
-        first_output = r.json()
-    else:
-        return "Sorry, I'm having trouble doing that right now. Please try again later."
-    results = first_output['results']
-    idnum = (results[1]['place_id'])
-    name = (results[1]['place_id'])
-    # print(results[1])
-    # print(idnum)
-    URL2 = "https://maps.googleapis.com/maps/api/place/details/json?placeid={}&key={}".format(idnum, key)
-    r2 = requests.get(URL2)
-    if r2.status_code == 200:
-        second_output = r2.json()
-        phone = (second_output['result'])['international_phone_number']
-        # print(second_output)
-        # print(phone)
-    else:
-        return "Sorry, I'm having trouble doing that right now. Please try again later."
 
-if __name__ == '__main__':
 
-  find_therapist()
+

@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_ask import Ask, statement, question, session, context
-from controller import welcome, re, condolences,ideas
-from geopy.geocoders import Nominatim
+from controller import welcome, re, condolences,ideas, get_alexa_location
+import geocoder
 import random
 import requests
 
@@ -30,16 +30,6 @@ def evaluate_answers():
     else:
         return "Good job doing all those things. When you're depressed, those little things can be the most difficult"
 
-def get_alexa_location():
-    URL =  "https://api.amazonalexa.com/v1/devices/{}/settings" \
-           "/address".format(context.System.device.deviceId)
-    TOKEN =  context.System.user.permissions.consentToken
-    HEADER = {'Accept': 'application/json',
-             'Authorization': 'Bearer {}'.format(TOKEN)}
-    r = requests.get(URL, headers=HEADER)
-    if r.status_code == 200:
-        print(r.json())
-        return(r.json())
 
 """These functions handle intent logic for the voice interface. """
 
@@ -213,7 +203,7 @@ def not_outside():
     response = evaluate_answers()
     suggestion_inquiry = "Let's also try something else to improve your mood."
     idea = ideas()
-    return statement(message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Would you like another suggestion?")
+    return question(message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help.  Would you like another suggestion?")
 
 @ask.intent('AMAZON.NoIntent')
 def handle_no():
@@ -282,7 +272,7 @@ def handle_no():
             response = evaluate_answers()
             suggestion_inquiry = "Let's also try something else to improve your mood."
             idea = ideas()
-            return statement(
+            return question(
                 message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Anything else I can do? I can send reports or suggest a local therapist.")
         elif session.attributes["State"] == "Suggested":
             session.attributes["State"] = "AnythingElse"
@@ -294,12 +284,11 @@ def handle_no():
     except:
         return question("I'm sorry, I didn't get that. How are you feeling?")
 
-
 @ask.intent('AMAZON.YesIntent')
 def handle_yes():
     try:
         if session.attributes["State"] == "Question 0 Answered":
-            return statement("Okay. What can I do for you?")
+            return question("Okay. What can I do for you?")
 
         elif session.attributes["State"] == "Question 1 Answered":
             message = random.choice([
@@ -364,13 +353,13 @@ def handle_yes():
                     suggestion_inquiry = "Here's an idea for an extra way to improve your mood."
                     idea = ideas()
                 session.attributes["State"] = "AnythingElse"
-                return statement(
+                return question(
                     message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Is there anything else I can do?")
         elif session.attributes["State"] == "Suggested":
             message = "Okay, here's another idea. "
             idea = ideas()
             session.attributes["State"] = "Suggested"
-            return statement(
+            return question(
                message + "       " + idea + "          " + "Would you like another suggestion?")
         elif session.attributes["State"] == "AnythingElse":
             return question("Okay, I love to help. What can I do for you? Say help if you would like to learn about my other capabilites.")
@@ -384,7 +373,7 @@ def suggest_ideas():
     suggestion_inquiry = "Okay. Here's an idea for an extra way to improve your mood."
     idea = ideas()
     session.attributes["State"] = "Suggested"
-    return statement(suggestion_inquiry + "       " + idea + "          " + "Would you like another suggestion?")
+    return question(suggestion_inquiry + "       " + idea + "          " + "Would you like another suggestion?")
 
 @ask.intent('HotLine')
 def hot_line():
@@ -395,42 +384,48 @@ def hot_line():
       .standard_card(title='National Suicide Prevention Hot Line', text='Call Now 1-800-273-8255 ', large_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Lifelinelogo.svg/1200px-Lifelinelogo.svg.png' )
 
 
+# @ask.intent('FindTherapist')
+# def start_therapist():
+#     return question ("Okay, I can help with that. What City are you in?")
+
 @ask.intent('FindTherapist')
 def find_therapist():
     keyword = "counseling OR therapist OR psychiatrist"
-    alexa_location = get_alexa_location()
-    geolocator = Nominatim()  # Set provider of geo-data
-    address = "{}, {}".format(alexa_location["addressLine1"].encode("utf-8"),
-                              alexa_location["city"].encode("utf-8"))
-    location = geolocator.geocode(address)
+    address = get_alexa_location()
+    g = geocoder.google(address)
+    latlng = g.latlng
+    location = "{},{}".format(latlng[0], latlng[1])
+    print(location)
     key = "AIzaSyA1yY-DOHIun0v_7kTwa_U5Ah6Am-kcjCM"
-    print(address)
-    print(location.latitude, location.longitude)
-    URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?location={}&query={}&key={}".format(location,keyword,key)
-    #print(URL)
-    r = requests.get(URL)
-    if r.status_code == 200:
-        first_output = r.json()
+    URL2 = "https://maps.googleapis.com/maps/api/place/textsearch/json?location={}&query={}&key={}".format(location,keyword,key)
+    print(URL2)
+    r2 = requests.get(URL2)
+    if r2.status_code == 200:
+        first_output = r2.json()
     else:
         return "Sorry, I'm having trouble doing that right now. Please try again later."
     results = first_output['results']
     idnum = (results[1]['place_id'])
-    name = (results[1]['place_id'])
+    name = (results[1]['name'])
     # print(results[1])
     # print(idnum)
-    URL2 = "https://maps.googleapis.com/maps/api/place/details/json?placeid={}&key={}".format(idnum, key)
-    r2 = requests.get(URL2)
-    if r2.status_code == 200:
-        second_output = r2.json()
+    URL3 = "https://maps.googleapis.com/maps/api/place/details/json?placeid={}&key={}".format(idnum, key)
+    r3 = requests.get(URL3)
+    if r3.status_code == 200:
+        second_output = r3.json()
         phone = (second_output['result'])['international_phone_number']
         # print(second_output)
         # print(phone)
-        return statement("""I've found a therapist near you. Their name is {}, and their number is {}. I've added their
-        contact info to a card in the Alexa app. Is there anything else I can do?""").standard_card(title="I've found you a possible therapist",
-                text="Name:{} \n Phone:{}",
-                large_image_url="https://images.unsplash.com/photo-1489533119213-66a5cd877091?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7c006c52fd09caf4e97536de8fcf5067&auto=format&fit=crop&w=1051&q=80").format(name,phone)
+        session.attributes["State"] = "Null"
+        message = """I've found a therapist near you. Their name is {}, and their number is {}. I've added their
+        contact info to a card in the Alexa app. Is there anything else I can do?""".format(name,phone)
+        card = "Name:{} \n Phone:{}".format(name,phone)
+        return question(message).standard_card(title="I've found you a possible therapist",
+                text=card,
+                large_image_url="https://images.unsplash.com/photo-1489533119213-66a5cd877091?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7c006c52fd09caf4e97536de8fcf5067&auto=format&fit=crop&w=1051&q=80")
     else:
         return statement("Sorry, I'm having trouble doing that right now. Please try again later.")
+
 
 @ask.intent('AMAZON.StopIntent')
 def handle_stop():

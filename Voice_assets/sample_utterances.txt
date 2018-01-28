@@ -8,7 +8,7 @@ PositiveFeeling I'm doing alright
 PositiveFeeling I'm just chillin
 PositiveFeeling Pretty good
 PositiveFeeling pretty dang good
-PositiveFeeling I'm on top of the world!
+PositiveFeeling I'm on top of the world
 PositiveFeeling ok
 PositiveFeeling fine
 PositiveFeeling great
@@ -44,7 +44,7 @@ NegativeFeeling really bad
 NegativeFeeling really down
 
 
-BedYes Yes, I got out of bed
+BedYes Yes I got out of bed
 BedYes I've gotten out of bed today
 BedYes I'm out of bed
 BedYes I got up
@@ -146,9 +146,11 @@ HotLine Kill me
 HotLine I'm going to jump off of a bridge
 HotLine I'm going to jump off a bridge
 HotLine I'm going to die
-Hotline I'm going to take a bunch of pills
+HotLine I'm going to take a bunch of pills
 HotLine I am going to commit suicide
 HotLine I want to commit suicide
 HotLine I'm going to jump
 HotLine I'm going to kill myself and others
 HotLine I want to kill everyone
+
+City {City_name}

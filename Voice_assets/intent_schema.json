@@ -55,13 +55,22 @@
       "intent": "OutsideNo"
     },
     {
-      "intent": "Suggestidea"
+      "intent": "SuggestIdea"
     },
     {
       "intent": "HotLine"
     },
     {
       "intent": "FindTherapist"
+    },
+    {
+      "intent": "City",
+      "slots":[
+        {
+          "name": "City_name",
+          "type": "AMAZON.US_CITY"
+        }
+        ]
     }
   ]
 }
