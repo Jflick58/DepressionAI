@@ -1,0 +1,4 @@
+[console_scripts]
+z = zappa.cli:handle
+zappa = zappa.cli:handle
+

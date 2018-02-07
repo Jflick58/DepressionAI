@@ -1,0 +1,3 @@
+[console_scripts]
+cfn-flip = cfn_flip.main:main
+

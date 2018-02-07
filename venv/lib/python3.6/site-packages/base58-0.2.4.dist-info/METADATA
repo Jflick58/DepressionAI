@@ -1,0 +1,19 @@
+Metadata-Version: 2.0
+Name: base58
+Version: 0.2.4
+Summary: Base58 and Base58Check implementation
+Home-page: https://github.com/keis/base58
+Author: David Keijser
+Author-email: keijser@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+
+UNKNOWN
+
+
