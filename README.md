@@ -1,5 +1,5 @@
 # DepressionAI
-![Logo](![Alexa Skill Cards](https://github.com/Jflick58/Easysentiment/blob/master/res/Easysentiment%201.2.png)
+![Logo](![Alexa Skill Cards](https://github.com/Jflick58/DepressionAI/blob/master/Screenshots/depression%20ai.png)
 VALLEY HACKATHON 2018 WINNER!!! (https://valleyhackathon.com/teams) Alexa skill for people suffering with depression. 
 
 # Description
