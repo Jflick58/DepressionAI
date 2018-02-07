@@ -1,0 +1,170 @@
+PositiveFeeling I feel good
+PositiveFeeling I feel ok
+PositiveFeeling I feel great
+PositiveFeeling I feel alright
+PositiveFeeling I feel awesome
+PositiveFeeling awesome
+PositiveFeeling I'm doing alright
+PositiveFeeling I'm just chillin
+PositiveFeeling Pretty good
+PositiveFeeling pretty dang good
+PositiveFeeling I'm on top of the world
+PositiveFeeling ok
+PositiveFeeling fine
+PositiveFeeling great
+PositiveFeeling okay
+PositiveFeeling not bad
+
+FindTherapist help me find a therapist
+FindTherapist I would like therapy
+FindTherapist can you find me a therapist
+FindTherapist can you find me a psychologist
+FindTherapist can you find me a counselor
+FindTherapist help me find a therapist
+FindTherapist help me find a counselor
+FindTherapist help me find a psychologist
+FindTherapist please find me a therapist
+FindTherapist please find me a counselor
+FindTherapist please find me a psychologist
+FindTherapist locate a therapist
+FindTherapist locate therapy
+
+NegativeFeeling I feel bad
+NegativeFeeling I feel down
+NegativeFeeling feel like shit
+NegativeFeeling bad
+NegativeFeeling crappy
+NegativeFeeling shitty
+NegativeFeeling I've felt better
+NegativeFeeling I've had better days
+NegativeFeeling I feel awful
+NegativeFeeling I feel terrible
+NegativeFeeling terrible
+NegativeFeeling really bad
+NegativeFeeling really down
+NegativeFeeling pretty bad
+NegativeFeeling kinda bad
+NegativeFeeling kinda down
+NegativeFeeling pretty bad
+
+BedYes Yes I got out of bed
+BedYes I've gotten out of bed today
+BedYes I'm out of bed
+BedYes I got up
+BedYes I'm up
+
+BedNo I haven't got up yet
+BedNo I haven't gotten up yet
+BedNo I'm still in bed
+BedNo I just woke up
+BedNo it's too hard
+BedNo I don't want to get out of bed
+BedNo I'm laying in bed
+
+
+AteYes I ate today
+AteYes I had breakfast
+AteYes I had lunch
+AteYes I had dinner
+AteYes I had brunch
+AteYes I ate something today
+AteYes I have eaten
+AteYes I ate
+
+
+AteNo I haven't eaten
+AteNo I wasn't hungry
+AteNo I don't want to eat
+AteNo Food doesn't sound good.
+AteNo I aint ate nothing
+AteNo I tried
+AteNo I'm not hungry
+
+ShowerYes I took a shower
+ShowerYes I showered
+ShowerYes I showered last night
+ShowerYes I took a shower before bed
+ShowerYes I took a shower last night
+ShowerYes I took a bath
+ShowerYes I bathed
+ShowerYes I took a hot shower
+
+ShowerNo I have not showered
+ShowerNo I have not taken a shower
+ShowerNo I I haven't showered
+ShowerNo I haven't taken a shower
+ShowerNo I haven't took a shower
+ShowerNo I don't want to
+
+DressedYes I'm dressed
+DressedYes I got dressed
+DressedYes I put some clothes on
+DressedYes I changed earlier
+DressedYes I changed
+DressedYes I threw on some clothes
+DressedYes I have gotten dressed
+DressedYes I put on clothes
+
+OutsideYes I have been outside
+OutsideYes I went outside earlier
+OutsideYes I went outside
+OutsideYes I've been outside
+OutsideYes I went out
+OutsideYes I was out for a minute
+OutsideYes I was out
+OutsideYes I went for a walk
+OutsideYes I went for a bike ride
+OutsideYes I walked my dog
+
+OutsideNo I have not been outside
+OutsideNo I haven't gone outside
+OutsideNo I have not gone outside
+OutsideNo I haven't been out
+OutsideNo I'm still inside
+OutsideNo I ain't gone out
+OutsideNo I have not been out
+
+SuggestIdea give me ideas
+SuggestIdea how can I improve my mood
+SuggestIdea what should I do
+SuggestIdea any idea what to do
+SuggestIdea help me improve my mood
+SuggestIdea tell me ways to feel better
+SuggestIdea tell me a way to cheer up
+SuggestIdea give me ideas on how to cheer up
+SuggestIdea suggest things I could do to feel better
+SuggestIdea help me feel better
+SuggestIdea I want to feel better
+SuggestIdea tell me how to improve my mood
+SuggestIdea improve my mood
+SuggestIdea give me ideas to improve my mood
+
+HotLine I'm going to kill myself
+HotLine I'm going to end it
+HotLine I don't feel like living
+HotLine I don't want to be alive anymore
+HotLine I want to kill myself
+HotLine I want to die
+HotLine Kill me
+HotLine I'm going to jump off of a bridge
+HotLine I'm going to jump off a bridge
+HotLine I'm going to die
+HotLine I'm going to take a bunch of pills
+HotLine I am going to commit suicide
+HotLine I want to commit suicide
+HotLine I'm going to jump
+HotLine I'm going to kill myself and others
+HotLine I want to kill everyone
+
+StartReport can you send a report for me
+StartReport send report
+StartReport send a report
+StartReport send my daily report
+StartReport can you send someone a report of my mood today
+StartReport can you send the report
+StartReport report
+
+Name {person_name}
+
+Email {example at gmail dot com | email_address}
+

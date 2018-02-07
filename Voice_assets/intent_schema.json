@@ -20,6 +20,69 @@
     },
     {
       "intent": "AMAZON.StartOverIntent"
+    },
+    {
+      "intent": "PositiveFeeling"
+    },
+    {
+      "intent": "NegativeFeeling"
+    },
+    {
+      "intent": "BedYes"
+    },
+    {
+      "intent": "BedNo"
+    },
+    {
+      "intent": "AteYes"
+    },
+    {
+      "intent": "AteNo"
+    },
+    {
+      "intent": "ShowerYes"
+    },
+    {
+      "intent": "ShowerNo"
+    },
+    {
+      "intent": "DressedYes"
+    },
+    {
+      "intent": "OutsideYes"
+    },
+    {
+      "intent": "StartReport"
+    },
+    {
+      "intent": "OutsideNo"
+    },
+    {
+      "intent": "SuggestIdea"
+    },
+    {
+      "intent": "HotLine"
+    },
+    {
+      "intent": "FindTherapist"
+    },
+    {
+      "intent": "Name",
+      "slots":[
+        {
+          "name": "person_name",
+          "type": "AMAZON.Person"
+        }
+        ]
+    },
+    {
+      "intent": "Email",
+      "slots":[
+        {
+          "name": "email_address",
+          "type": "AMAZON.LITERAL"
+        }
+        ]
     }
   ]
 }
