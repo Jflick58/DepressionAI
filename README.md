@@ -1,4 +1,5 @@
 # DepressionAI
+![Logo](![Alexa Skill Cards](https://github.com/Jflick58/DepressionAI/blob/master/Screenshots/depression%20ai.png)
 VALLEY HACKATHON 2018 WINNER!!! (https://valleyhackathon.com/teams) Alexa skill for people suffering with depression. 
 
 # Description
@@ -11,7 +12,17 @@ According to Psychology Today, 71% of people who make their bed in the morning r
 - Suggestions for small activites to improve the user's mood
 - Displays informative cards in the Alexa app
 
+# Sample Phrases
+
+- "Alexa, check on me."
+- "I feel down."
+- "I haven't got out of bed today." 
+- "Help me feel better."
+- "Help me find a therapist"
+
 # Screenshot
+
+![Alexa Skill Cards](https://github.com/Jflick58/DepressionAI/blob/master/Screenshots/IMG_0546.PNG)
 
 # Roadmap 
 - Add unittests 
