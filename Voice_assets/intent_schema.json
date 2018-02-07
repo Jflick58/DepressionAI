@@ -52,6 +52,9 @@
       "intent": "OutsideYes"
     },
     {
+      "intent": "StartReport"
+    },
+    {
       "intent": "OutsideNo"
     },
     {
@@ -64,11 +67,20 @@
       "intent": "FindTherapist"
     },
     {
-      "intent": "City",
+      "intent": "Name",
       "slots":[
         {
-          "name": "City_name",
-          "type": "AMAZON.US_CITY"
+          "name": "person_name",
+          "type": "AMAZON.Person"
+        }
+        ]
+    },
+    {
+      "intent": "Email",
+      "slots":[
+        {
+          "name": "email_address",
+          "type": "AMAZON.LITERAL"
         }
         ]
     }

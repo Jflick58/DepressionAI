@@ -3,6 +3,7 @@ import requests
 from flask_ask import context
 
 def get_alexa_location():
+    """This functions gets the location of the User's Alexa device, if they have granted location permissions. """
     URL = "https://api.amazonalexa.com/v1/devices/{}/settings" \
           "/address".format(context.System.device.deviceId)
     TOKEN = context.System.user.permissions.consentToken
@@ -16,6 +17,7 @@ def get_alexa_location():
     return address
 
 def welcome():
+    """This function generates welcome messages that voice.py functions use to welcome the user."""
     greetings = [
         'Hi,',
         'Hello,',
@@ -45,6 +47,7 @@ def welcome():
     return (welcome)
 
 def re():
+    """This generates the re-prompt phrases that the skill uses if a user has not responded. """
     reprompts = [
         'Are you still there?',
         'Did you leave?',
@@ -53,13 +56,12 @@ def re():
         'Are you there?'
     ]
 
-    print((random.choice(reprompts)) + " " + (help_message()))
-    return ((random.choice(reprompts)) + " " + (help_message()))
-
-def help_message():
-    return "Say 'help' if you need assistance."
+    help_message = "Say 'help' if you need assistance"
+    print((random.choice(reprompts)) + " " + (help_message))
+    return ((random.choice(reprompts)) + " " + (help_message))
 
 def condolences():
+    """This function  generates the condolences used by the voice.py functions when a user responds with something negative"""
     condolences = [
         "I'm sorry to hear that.",
         "I'm sorry you aren't feeling good.",
@@ -75,6 +77,8 @@ def condolences():
     return (random.choice(condolences))
 
 def ideas():
+
+    """This is the function that generates the idea for mood improvement that is offered by various voice.py functions"""
 
     ideas = [
         "Go for a walk.",

@@ -42,7 +42,10 @@ NegativeFeeling I feel terrible
 NegativeFeeling terrible
 NegativeFeeling really bad
 NegativeFeeling really down
-
+NegativeFeeling pretty bad
+NegativeFeeling kinda bad
+NegativeFeeling kinda down
+NegativeFeeling pretty bad
 
 BedYes Yes I got out of bed
 BedYes I've gotten out of bed today
@@ -153,4 +156,15 @@ HotLine I'm going to jump
 HotLine I'm going to kill myself and others
 HotLine I want to kill everyone
 
-City {City_name}
+StartReport can you send a report for me
+StartReport send report
+StartReport send a report
+StartReport send my daily report
+StartReport can you send someone a report of my mood today
+StartReport can you send the report
+StartReport report
+
+Name {person_name}
+
+Email {example at gmail dot com | email_address}
+
