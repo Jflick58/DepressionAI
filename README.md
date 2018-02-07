@@ -1,8 +1,24 @@
-# Depression.AI
-Alexa skill for people suffering with depression. 
+# DepressionAI
+VALLEY HACKATHON 2018 WINNER!!! (https://valleyhackathon.com/teams) Alexa skill for people suffering with depression. 
 
-# Purpose 
-This is the github repo for team Depression.AI for the 2018 Valley Hackathon in Modesto. The goal is to build a functioning Alexa skill that checks up on people with depression, and encourages them to perform daily activities to maintain and/or improve their mental state. 
+# Description
+According to Psychology Today, 71% of people who make their bed in the morning report feeling happy. This was the inspiration behind DepressionAI. The aim behind this skill is to encourage people to perform daily activities that become very difficult when one is depressed. The skill detects positive and negative moods. If the user is having a bad day, it asks them a series of questions about what they have done that day (e.g. "Have you gotten out of bed?") and if they haven't, it encourages them to do so. 
+
+# Features 
+- Mood evaluation by a highly empathetic Alexa bot
+- Suicidal intention detection and prevention attempt
+- Location-based therapy reccomendations 
+- Suggestions for small activites to improve the user's mood
+- Displays informative cards in the Alexa app
+
+# Screenshot
+
+# Roadmap 
+- Add unittests 
+- Add docs 
+- Add reporting feature 
+- Port to Google Home
 
 # Contributing 
-I will add other hackathon team members to this repo once the hackathon begins.
+Feel free to fork and add a pull request. I welcome all contributions to this open-source project. I've added a Dockerfile and a virtual environment. 
+
