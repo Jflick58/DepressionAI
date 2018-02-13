@@ -6,7 +6,7 @@ VALLEY HACKATHON 2018 WINNER!!! (https://valleyhackathon.com/teams) Alexa skill 
 # Description
 According to Psychology Today, 71% of people who make their bed in the morning report feeling happy. This was the inspiration behind DepressionAI. The aim behind this skill is to encourage people to perform daily activities that become very difficult when one is depressed. The skill detects positive and negative moods. If the user is having a bad day, it asks them a series of questions about what they have done that day (e.g. "Have you gotten out of bed?") and if they haven't, it encourages them to do so. 
 
-This tool does not provide medical advice, and is for informational and educational purposes only, and is not a substitute for professional medical advice, treatment or diagnosis. Call your doctor to receive medical advice. If you think you may have a medical emergency, please dial your local emergency response phone number
+This tool does not provide medical advice, and is for informational and educational purposes only, and is not a substitute for professional medical advice, treatment or diagnosis. Call your doctor to receive medical advice. If you think you may have a medical emergency, please dial your local emergency response phone number.
 
 # Features 
 - Mood evaluation by a highly empathetic Alexa bot
