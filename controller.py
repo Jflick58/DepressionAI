@@ -110,7 +110,7 @@ def ideas():
         "Read Reddit.",
         "Listen to your favorite music.",
         "Go fishing.",
-        "Gaze at the starts.",
+        "Gaze at the stars.",
         "Meditate.",
         "Vist a museum.",
         "Watch a video of baby pugs.",
