@@ -6,6 +6,6 @@ WORKDIR /depressionai/
 
 EXPOSE 5000
 
-RUN pip install requirements.txt
+RUN pip install -r requirements.txt
 
-CMD [ "python", "./voice.py" ]
+CMD [ "python3", "./voice.py" ]
