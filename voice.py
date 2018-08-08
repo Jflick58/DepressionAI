@@ -6,6 +6,9 @@ from controller import welcome, re, condolences,ideas, get_alexa_location
 import geocoder
 import random
 import requests
+import logging
+
+logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
 app = Flask(__name__)
 ask = Ask(app, '/')
@@ -222,7 +225,7 @@ def outside():
         suggestion_inquiry = "Here's an idea for an extra way to improve your mood."
         idea = ideas()
 
-    return statement(message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Would you like another suggestion?")
+    return question(message + "      " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Would you like another suggestion?")
 
 @ask.intent('OutsideNo')
 def not_outside():
@@ -313,9 +316,9 @@ def handle_no():
                 message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Anything else I can do?")
         elif session.attributes["State"] == "Suggested":
             session.attributes["State"] = "AnythingElse"
-            return question("Okay, I hope that helped. Anything else I can do for you?")
+            return statement("Okay, I hope that helped. Anything else I can do for you?")
         elif session.attributes["State"] == "AnythingElse":
-            return question("No problem. Check in with me later. Goodbye")
+            return statement("No problem. Check in with me later. Goodbye")
         else:
             return question("I'm sorry, I didn't get that. How are you feeling? ")
     except:
@@ -431,13 +434,13 @@ def find_therapist():
         address = get_alexa_location()
         pass
     except:
-        return statement("""Hmm. It appears that I can't find your location. Please allow access to your "
+        return statement("""Hmm. It appears that I can't find your location. Please allow access to your
                          location in the Alexa app and try again """).consent_card("read::alexa:device:all:address")
     g = geocoder.google(address)
     latlng = g.latlng
     location = "{},{}".format(latlng[0], latlng[1])
     print(location)
-    key = "api_key"
+    key = "AIzaSyA1yY-DOHIun0v_7kTwa_U5Ah6Am-kcjCM"
     URL2 = "https://maps.googleapis.com/maps/api/place/textsearch/json?location={}&query={}&key={}".format(location,keyword,key)
     print(URL2)
     r2 = requests.get(URL2)
@@ -458,8 +461,9 @@ def find_therapist():
         # print(second_output)
         # print(phone)
         session.attributes["State"] = "Null"
-        message = """I've found a therapist near you. Their name is: {}, and their number is: {}. I've added their
-        contact info to a card in the Alexa app. Is there anything else I can do?""".format(name,phone)
+        message = """I've found a therapist near you.
+        Their name is: {}, and their number is: {}. I've added their contact info to a card in the Alexa app.
+         Is there anything else I can do?""".format(name,phone)
         card = "Name:{} \n Phone:{}".format(name,phone)
         return question(message).standard_card(title="I've found you a possible therapist",
                 text=card,
