@@ -81,7 +81,8 @@ def user_feels_good():
         'Good to hear!',
         'Wonderful!',
         'Great!',
-        'I am so happy about that!'
+        'I am so happy about that!',
+        'That is so great!'
     ]
 
     session.attributes["feeling"] = "Good"
