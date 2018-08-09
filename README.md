@@ -3,7 +3,7 @@
 
 VALLEY HACKATHON 2018 WINNER!!! (https://valleyhackathon.com/teams) Alexa skill for people suffering with depression. 
 
-Now available in the Alexa skills store in US, UK, Canada, India, and Australia.
+Now available in the Alexa skills store in US, UK, Canada, India, and Australia. Google Home coming soon.
 
 # Description
 According to Psychology Today, 71% of people who make their bed in the morning report feeling happy. This was the inspiration behind DepressionAI. The aim behind this skill is to encourage people to perform daily activities that become very difficult when one is depressed. The skill detects positive and negative moods. If the user is having a bad day, it asks them a series of questions about what they have done that day (e.g. "Have you gotten out of bed?") and if they haven't, it encourages them to do so. 
