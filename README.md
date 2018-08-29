@@ -29,6 +29,9 @@ This tool does not provide medical advice, and is for informational and educatio
 
 ![Alexa Skill Cards](https://github.com/Jflick58/DepressionAI/blob/master/Screenshots/IMG_0546.PNG)
 
+# Architecture
+![Architecture Diagram](https://github.com/Jflick58/DepressionAI/blob/master/Screenshots/architecturediagram.png)
+
 # Roadmap 
 - Add unittests 
 - Add docs 
