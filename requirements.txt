@@ -18,7 +18,7 @@ decorator==4.2.1
 docutils==0.14
 durationpy==0.5
 Flask==0.12.3
-Flask-Ask==0.9.7
+Flask-Ask==0.9.8
 future==0.16.0
 geocoder==1.35.0
 gunicorn==19.7.1
