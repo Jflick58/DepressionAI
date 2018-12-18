@@ -317,7 +317,7 @@ def handle_no():
                 message + "      " + response + "       " + suggestion_inquiry + "       " + idea + "          " + "I hope I could help. Anything else I can do?")
         elif session.attributes["State"] == "Suggested":
             session.attributes["State"] = "AnythingElse"
-            return statement("Okay, I hope that helped. Anything else I can do for you?")
+            return question("Okay, I hope that helped. Anything else I can do for you?")
         elif session.attributes["State"] == "AnythingElse":
             return statement("No problem. Check in with me later. Goodbye")
         else:
