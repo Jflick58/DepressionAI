@@ -17,7 +17,7 @@ cryptography==2.4.2
 decorator==4.3.0
 docutils==0.14
 durationpy==0.5
-Flask==0.12.1
+Flask==1.0.2
 Flask-Ask==0.9.7
 future==0.16.0
 geocoder==1.35.0
