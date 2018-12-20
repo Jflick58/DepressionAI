@@ -31,7 +31,7 @@ kappa==0.7.0
 lambda-packages==0.20.0
 MarkupSafe==1.1.0
 placebo==0.8.2
-pyasn1==0.4.2
+pyasn1==0.4.4
 pycparser==2.18
 Pygments==2.2.0
 pyOpenSSL==18.0.0
