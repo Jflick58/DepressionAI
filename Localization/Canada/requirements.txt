@@ -24,7 +24,7 @@ geocoder==1.38.1
 gunicorn==19.9.0
 hjson==3.0.1
 idna==2.8
-imagesize==0.7.1
+imagesize==1.1.0
 itsdangerous==0.24
 Jinja2==2.10
 jmespath==0.9.3
