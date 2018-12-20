@@ -23,7 +23,7 @@ future==0.17.1
 geocoder==1.38.1
 gunicorn==19.9.0
 hjson==3.0.1
-idna==2.6
+idna==2.8
 imagesize==0.7.1
 itsdangerous==0.24
 Jinja2==2.10
