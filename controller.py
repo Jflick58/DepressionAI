@@ -9,7 +9,7 @@ def get_alexa_location():
     TOKEN = context.System.user.permissions.consentToken
     HEADER = {'Accept': 'application/json',
               'Authorization': 'Bearer {}'.format(TOKEN)}
-    r = requests.get(URL, headers=HEADER)
+    r = requests.get(URL, headers=HEADER, verify=False)
     if r.status_code == 200:
         alexa_location = r.json()
     address = "{} {}".format(alexa_location["addressLine1"],
