@@ -7,7 +7,7 @@ Babel==2.6.0
 base58==1.0.2
 boto3==1.9.69
 botocore==1.12.69
-certifi==2018.1.18
+certifi==2018.11.29
 cffi==1.11.4
 cfn-flip==1.0.0
 chardet==3.0.4
