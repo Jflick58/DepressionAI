@@ -434,7 +434,7 @@ def find_therapist():
     keyword = "counseling OR therapist OR psychiatrist"
     try:
         address = get_alexa_location()
-        logging.info(addres)
+        logging.info(address)
         pass
     except:
         logging.error("COULD NOT GET ALEXA LOCATION")
