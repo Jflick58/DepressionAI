@@ -14,7 +14,7 @@ chardet==3.0.4
 click==7.0
 colorama==0.4.1
 cryptography==2.4.2
-decorator==4.2.1
+decorator==4.3.0
 docutils==0.14
 durationpy==0.5
 Flask==0.12.1
