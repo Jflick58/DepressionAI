@@ -27,7 +27,7 @@ imagesize==1.1.0
 itsdangerous==1.1.0
 Jinja2==2.10
 jmespath==0.9.3
-kappa==0.6.0
+kappa==0.7.0
 lambda-packages==0.19.0
 MarkupSafe==1.0
 placebo==0.8.1
