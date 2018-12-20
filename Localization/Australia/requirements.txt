@@ -37,7 +37,7 @@ pycparser==2.19
 Pygments==2.3.1
 pyOpenSSL==18.0.0
 python-dateutil==2.7.5
-python-slugify==1.2.4
+python-slugify==1.2.6
 pytz==2017.3
 PyYAML==3.12
 ratelim==0.1.6
