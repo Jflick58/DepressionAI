@@ -24,7 +24,7 @@ gunicorn==19.9.0
 hjson==3.0.1
 idna==2.8
 imagesize==1.1.0
-itsdangerous==0.24
+itsdangerous==1.1.0
 Jinja2==2.10
 jmespath==0.9.3
 kappa==0.6.0
