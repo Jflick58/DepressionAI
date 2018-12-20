@@ -13,7 +13,7 @@ cfn-flip==1.0.0
 chardet==3.0.4
 click==6.7
 colorama==0.3.7
-cryptography==2.5
+cryptography==2.4.2
 decorator==4.2.1
 docutils==0.14
 durationpy==0.5
