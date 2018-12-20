@@ -435,6 +435,8 @@ def find_therapist():
         address = get_alexa_location()
         pass
     except:
+        logging.error("COULD NOT GET ALEXA LOCATION")
+        logging.debug(traceback.format_exc())
         return statement("""Hmm. It appears that I can't find your location. Please allow access to your
                          location in the Alexa app and try again """).consent_card("read::alexa:device:all:address")
     g = geocoder.google(address)
