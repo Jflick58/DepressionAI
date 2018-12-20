@@ -33,7 +33,7 @@ lambda-packages==0.20.0
 MarkupSafe==1.1.0
 placebo==0.8.2
 pyasn1==0.4.4
-pycparser==2.18
+pycparser==2.19
 Pygments==2.2.0
 pyOpenSSL==17.0.0
 python-dateutil==2.6.1
