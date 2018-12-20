@@ -50,7 +50,7 @@ sphinxcontrib-websupport==1.1.0
 toml==0.10.0
 tqdm==4.28.1
 troposphere==2.3.4
-Unidecode==1.0.22
+Unidecode==1.0.23
 urllib3==1.23
 Werkzeug==0.12
 wsgi-request-logger==0.4.6
