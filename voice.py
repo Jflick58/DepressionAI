@@ -4,6 +4,7 @@ from flask import Flask
 from flask_ask import Ask, statement, question, session
 from controller import welcome, re, condolences,ideas, get_alexa_location
 import geocoder
+import traceback
 import random
 import requests
 import logging
