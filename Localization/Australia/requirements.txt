@@ -20,7 +20,7 @@ durationpy==0.5
 Flask==1.0.2
 Flask-Ask==0.9.8
 future==0.17.1
-geocoder==1.35.0
+geocoder==1.38.1
 gunicorn==19.7.1
 hjson==3.0.1
 idna==2.6
