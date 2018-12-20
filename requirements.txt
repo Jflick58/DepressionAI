@@ -41,7 +41,7 @@ python-slugify==1.2.4
 pytz==2017.3
 PyYAML==3.12
 ratelim==0.1.6
-requests==2.20.0
+requests==2.21.0
 rsa==3.4.2
 s3transfer==0.1.12
 six==1.11.0
