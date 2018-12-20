@@ -6,7 +6,7 @@ def get_alexa_location():
     """This functions gets the location of the User's Alexa device, if they have granted location permissions. """
     URL = "https://api.amazonalexa.com/v1/devices/{}/settings" \
           "/address".format(context.System.device.deviceId)
-    TOKEN = context.System.user.permissions.consentToken
+    TOKEN = context.System.apiAccessToken
     HEADER = {'Accept': 'application/json',
               'Authorization': 'Bearer {}'.format(TOKEN)}
     r = requests.get(URL, headers=HEADER, verify=False)
