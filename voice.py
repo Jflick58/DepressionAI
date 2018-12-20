@@ -434,6 +434,7 @@ def find_therapist():
     keyword = "counseling OR therapist OR psychiatrist"
     try:
         address = get_alexa_location()
+        logging.info(addres)
         pass
     except:
         logging.error("COULD NOT GET ALEXA LOCATION")
@@ -458,7 +459,7 @@ def find_therapist():
     # print(results[1])
     # print(idnum)
     URL3 = "https://maps.googleapis.com/maps/api/place/details/json?placeid={}&key={}".format(idnum, key)
-    r3 = requests.get(URL3)
+    r3 = requests.get(URL3, verify=False)
     if r3.status_code == 200:
         second_output = r3.json()
         phone = (second_output['result'])['international_phone_number']
