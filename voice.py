@@ -447,7 +447,7 @@ def find_therapist():
     key = "AIzaSyA1yY-DOHIun0v_7kTwa_U5Ah6Am-kcjCM"
     URL2 = "https://maps.googleapis.com/maps/api/place/textsearch/json?location={}&query={}&key={}".format(location,keyword,key)
     print(URL2)
-    r2 = requests.get(URL2)
+    r2 = requests.get(URL2, verify=False)
     if r2.status_code == 200:
         first_output = r2.json()
     else:
