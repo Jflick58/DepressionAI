@@ -6,6 +6,7 @@ from controller import welcome, re, condolences,ideas, get_alexa_location
 import geocoder
 import traceback
 import random
+import os
 import requests
 import logging
 
@@ -445,7 +446,7 @@ def find_therapist():
     latlng = g.latlng
     location = "{},{}".format(latlng[0], latlng[1])
     print(location)
-    key = "AIzaSyA1yY-DOHIun0v_7kTwa_U5Ah6Am-kcjCM"
+    key = os.environ['GCLOUD_KEY']
     URL2 = "https://maps.googleapis.com/maps/api/place/textsearch/json?location={}&query={}&key={}".format(location,keyword,key)
     print(URL2)
     r2 = requests.get(URL2, verify=False)
