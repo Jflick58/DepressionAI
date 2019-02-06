@@ -1,6 +1,7 @@
 import random
 import requests
 import logging
+import os
 from flask_ask import context
 
 logging.getLogger('flask_ask').setLevel(logging.DEBUG)
@@ -9,7 +10,7 @@ def get_alexa_location():
     """This functions gets the location of the User's Alexa device, if they have granted location permissions. """
     URL = "https://api.amazonalexa.com/v1/devices/{}/settings" \
           "/address".format(context.System.device.deviceId)
-    TOKEN = context.System.apiAccessToken
+    TOKEN = context.System.user.permissions.consentToken
     HEADER = {'Accept': 'application/json',
               'Authorization': 'Bearer {}'.format(TOKEN)}
     r = requests.get(URL, headers=HEADER, verify=False)
