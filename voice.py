@@ -443,14 +443,17 @@ def find_therapist():
         return statement("""Hmm. It appears that I can't find your location. Please allow access to your
                          location in the Alexa app and try again """).consent_card("read::alexa:device:all:address")
     try:
-        g = geocoder.google(address)
-        latlng = g.latlng
-        location = "{},{}".format(latlng[0], latlng[1])
+        gcodeurl = 'https://maps.googleapis.com/maps/api/geocode/json
+        params = {'sensor': 'false', 'address': address}
+        gc = requests.get(gcodeurl, params=params, verify=False)
+        results = gc.json()['results']
+        location = results[0]['geometry']['location']
+        location = "{},{}".format(location['lat'], location['lng'])
     except: 
         logging.error('ERROR using google geocoder')
         logging.debug(g.ok)
         logging.debug(g.json)
-        return "Sorry, I'm having trouble doing that right now. Please try again later."
+        return statement("Sorry, I'm having trouble doing that right now. Please try again later.")
     print(location)
     key = os.environ['GCLOUD_KEY']
     URL2 = "https://maps.googleapis.com/maps/api/place/textsearch/json?location={}&query={}&key={}".format(location,keyword,key)
