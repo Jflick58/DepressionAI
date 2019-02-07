@@ -435,7 +435,7 @@ def find_therapist():
     keyword = "counseling OR therapist OR psychiatrist"
     try:
         address = get_alexa_location()
-        logging.info(address)
+        logging.debug(address)
         pass
     except:
         logging.error("COULD NOT GET ALEXA LOCATION")
@@ -451,8 +451,7 @@ def find_therapist():
         location = "{},{}".format(location['lat'], location['lng'])
     except: 
         logging.error('ERROR using google geocoder')
-        logging.debug(g.ok)
-        logging.debug(g.json)
+        logging.debug(gc.json)
         return statement("Sorry, I'm having trouble doing that right now. Please try again later.")
     print(location)
     key = os.environ['GCLOUD_KEY']
