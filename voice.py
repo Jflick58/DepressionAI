@@ -443,7 +443,7 @@ def find_therapist():
         return statement("""Hmm. It appears that I can't find your location. Please allow access to your
                          location in the Alexa app and try again """).consent_card("read::alexa:device:all:address")
     try:
-        gcodeurl = 'https://maps.googleapis.com/maps/api/geocode/json
+        gcodeurl = 'https://maps.googleapis.com/maps/api/geocode/json'
         params = {'sensor': 'false', 'address': address}
         gc = requests.get(gcodeurl, params=params, verify=False)
         results = gc.json()['results']
