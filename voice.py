@@ -448,7 +448,8 @@ def find_therapist():
         location = "{},{}".format(latlng[0], latlng[1])
     except: 
         logging.error('ERROR using google geocoder')
-        logging.debug(g)
+        logging.debug(g.ok)
+        logging.debug(g.json)
         return "Sorry, I'm having trouble doing that right now. Please try again later."
     print(location)
     key = os.environ['GCLOUD_KEY']
