@@ -17,6 +17,7 @@ def get_alexa_location():
     try:
     #if r.status_code == 200:
         alexa_location = r.json()
+        logging.info(r.json())
         address = "{} {}".format(alexa_location["addressLine1"],
                              alexa_location["city"])
     except:
