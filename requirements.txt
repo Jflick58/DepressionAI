@@ -29,7 +29,7 @@ Jinja2==2.10
 jmespath==0.9.3
 kappa==0.7.0
 lambda-packages==0.20.0
-MarkupSafe==1.1.0
+MarkupSafe==1.1.1
 placebo==0.8.2
 pyasn1==0.4.5
 pycparser==2.19
