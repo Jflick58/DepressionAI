@@ -16,7 +16,7 @@ colorama==0.4.1
 decorator==4.3.2
 docutils==0.14
 durationpy==0.5
-Flask==1.0.2
+Flask==1.0.3
 Flask-Ask==0.9.8
 future==0.17.1
 geocoder==1.38.1
