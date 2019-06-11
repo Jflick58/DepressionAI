@@ -1,5 +1,5 @@
 alabaster==0.7.12
-aniso8601==4.1.0
+aniso8601==7.0.0
 argcomplete==1.9.4
 asn1crypto==0.24.0
 awscli==1.16.99
