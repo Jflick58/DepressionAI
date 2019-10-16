@@ -1,7 +1,7 @@
 alabaster==0.7.12
 aniso8601==4.1.0
 argcomplete==1.9.4
-asn1crypto==0.24.0
+asn1crypto==1.2.0
 awscli==1.16.99
 Babel==2.6.0
 base58==1.0.3
