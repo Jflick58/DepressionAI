@@ -18,7 +18,7 @@ docutils==0.14
 durationpy==0.5
 Flask==1.0.2
 Flask-Ask==0.9.8
-future==0.17.1
+future==0.18.1
 geocoder==1.38.1
 gunicorn==19.9.0
 hjson==3.0.1
