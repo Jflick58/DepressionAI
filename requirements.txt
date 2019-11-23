@@ -20,7 +20,7 @@ Flask==1.0.2
 Flask-Ask==0.9.8
 future==0.17.1
 geocoder==1.38.1
-gunicorn==19.9.0
+gunicorn==20.0.2
 hjson==3.0.1
 idna==2.8
 imagesize==1.1.0
